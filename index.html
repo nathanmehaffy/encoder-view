@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Encoder View</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Encoder View</h1>
+        
+        <div id="loading-container">
+            <p>Loading model...</p>
+        </div>
+        
+        <div id="app-container" style="opacity: 0.5;">
+            <textarea id="textinput" placeholder="Enter text to analyze..."></textarea>
+            <button id="submit" disabled>Submit</button>
+            
+            <div id="processing-indicator" class="hidden">
+                <p>Processing text...</p>
+            </div>
+            
+            <div id="result-container">
+                <div id="tokensDisplay"></div>
+                <p id="output"></p>
+            </div>
+            
+            <button id="find-vector" class="hidden">Find Vector for Selection</button>
+            
+            <div id="pca-container" class="hidden">
+                <h3>PCA Components (% variance explained)</h3>
+                <div id="pca-components"></div>
+                
+                <div id="pca-grids-container" class="hidden">
+                    <h3>Interactive Component Selection</h3>
+                    <p class="grid-instructions">Drag points in grids to create a custom vector</p>
+                    <div id="pca-grids">
+                        <div class="grid-container">
+                            <h4>Components 1 & 2</h4>
+                            <canvas id="grid-1-2" width="200" height="200"></canvas>
+                            <div class="grid-labels">
+                                <span class="y-label">2</span>
+                                <span class="x-label">1</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-container">
+                            <h4>Components 3 & 4</h4>
+                            <canvas id="grid-3-4" width="200" height="200"></canvas>
+                            <div class="grid-labels">
+                                <span class="y-label">4</span>
+                                <span class="x-label">3</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-container">
+                            <h4>Components 5 & 6</h4>
+                            <canvas id="grid-5-6" width="200" height="200"></canvas>
+                            <div class="grid-labels">
+                                <span class="y-label">6</span>
+                                <span class="x-label">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="vector-weights">
+                        <p>Current weights: <span id="current-weights">1.00, 0.00, 0.00, 0.00, 0.00, 0.00</span></p>
+                    </div>
+                </div>
+                
+                <div id="saved-vectors-container" class="hidden">
+                    <h3>Saved Vectors</h3>
+                    <button id="save-vector">Save Current Vector</button>
+                    <div id="saved-vectors-list"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Custom popup dialog -->
+        <div id="popup-container" class="hidden">
+            <div id="popup">
+                <div id="popup-content"></div>
+                <div id="popup-actions">
+                    <input id="popup-input" class="hidden" type="text" placeholder="Enter name...">
+                    <div id="popup-buttons">
+                        <button id="popup-ok">OK</button>
+                        <button id="popup-cancel" class="hidden">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p class="copyright">&copy; 2025 Nathan Mehaffy. All rights reserved.</p>
+        <div class="coffee-button">
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="nathanmehaffy" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+        </div>
+    </footer>
+    
+    <script src="index.js" type="module"></script>
+</body>
+</html>

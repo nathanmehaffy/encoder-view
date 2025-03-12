@@ -1,0 +1,356 @@
+/* Base styles */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#app-container {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Loading state */
+#loading-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Input area */
+#textinput {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Buttons - shared style for all app buttons */
+#submit, #find-vector, #save-vector, .saved-vector button {
+    padding: 8px 20px;
+    background-color: white;
+    border: 1px solid black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+
+#submit {
+    display: block;
+    margin: 0 auto 30px;
+}
+
+#find-vector, #save-vector {
+    display: block;
+    margin: 30px auto 30px;
+}
+
+#submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Processing indicator */
+#processing-indicator {
+    text-align: center;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* Results area */
+#result-container {
+    border: 1px solid black;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#tokensDisplay {
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    text-align: justify;
+}
+
+#output {
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+}
+
+/* PCA Components */
+#pca-container {
+    margin-top: 20px;
+}
+
+#pca-container h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+#pca-components {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.pca-component {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.pca-component:hover {
+    background-color: #f9f9f9;
+}
+
+.pca-component.selected {
+    border-color: black;
+    background-color: #f0f0f0;
+}
+
+.pca-component .component-label {
+    flex: 1;
+}
+
+.pca-component .variance-explained {
+    font-style: italic;
+}
+
+/* PCA Grids */
+#pca-grids-container, #saved-vectors-container {
+    margin-top: 30px;
+    border: 1px solid #eee;
+    padding: 20px;
+}
+
+#pca-grids-container {
+    padding: 20px 40px;
+    cursor: pointer;
+}
+
+#pca-grids-container.selected {
+    border-color: black;
+    background-color: #f0f0f0;
+}
+
+.grid-instructions {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+#pca-grids {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-container h4 {
+    margin: 0 0 10px 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.grid-container canvas {
+    border: 1px solid black;
+    cursor: crosshair;
+}
+
+.grid-labels {
+    position: relative;
+    width: 200px;
+    height: 20px;
+}
+
+.grid-labels .x-label {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.grid-labels .y-label {
+    position: absolute;
+    top: -200px;
+    left: -20px;
+}
+
+#vector-weights {
+    text-align: center;
+    font-family: monospace;
+    margin-top: 10px;
+}
+
+/* Custom Popup */
+#popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#popup {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#popup-content {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+#popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#popup-input {
+    padding: 8px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 1px solid black;
+}
+
+#popup-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#popup-ok, #popup-cancel {
+    padding: 8px 20px;
+    background-color: white;
+    border: 1px solid black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+
+#popup-ok:hover, #popup-cancel:hover {
+    background-color: #f0f0f0;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    margin-top: 40px;
+}
+
+footer .copyright {
+    margin: 0;
+}
+
+/* Buy Me a Coffee button styling */
+.coffee-button {
+    transform: scale(0.7);
+    transform-origin: right center;
+}
+
+/* Token selection */
+.token {
+    cursor: pointer;
+    padding: 2px 0;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.token:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.token.selected {
+    background-color: #FFEB3B;
+    border-radius: 3px;
+}
+
+/* Saved vectors */
+#saved-vectors-container h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.saved-vector {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.saved-vector:hover {
+    background-color: #f9f9f9;
+}
+
+.saved-vector.selected {
+    border-color: black;
+    background-color: #f0f0f0;
+}
+
+.saved-vector .vector-name {
+    flex: 1;
+    margin-right: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.saved-vector .vector-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.saved-vector button {
+    padding: 4px 8px;
+    font-size: 0.9em;
+}
